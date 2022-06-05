@@ -1,0 +1,60 @@
+.nav {
+    height: 5em;
+    /* background-color: #C4C4C4C4; */
+    background-color: #5BB5B0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+}
+
+.Home{
+    margin: 0;
+    margin-left: 30px;
+}
+
+.main{
+    display: flex;
+    position: relative;
+}
+
+.dataCenter{
+    width: 100%;
+    height: calc(100vh - 5em - 15px);
+    background-color: #EFEFEF;
+    border-radius: 10px;
+    border: 1px solid #5BB5B0;
+    overflow: scroll;
+    margin: 5px;
+}
+
+.modal{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left:0;
+    background-color: #ffffff7b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(2px);
+}
+
+.modalContent{
+    height: 60%;
+    width: 40%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.crossButton {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+
+.crossButton img{
+    width: 20px;
+    height: 20px;
+}

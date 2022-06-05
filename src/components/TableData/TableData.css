@@ -1,0 +1,27 @@
+.card{
+    height: 6em;
+    width: 100%;
+    background-color: #BFBBBA;
+    /* border-radius: 20px; */
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.card:nth-child(2n){
+    background-color: #efefef;
+}
+
+.card div {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* .card p {
+    margin: 0;
+    margin-bottom: 10px;
+} */

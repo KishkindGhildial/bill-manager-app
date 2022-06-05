@@ -1,0 +1,21 @@
+.option {
+    display: flex;
+    width: 100%;
+    height: 5em;
+    padding: 0 10px;
+    align-items: center;
+}
+
+#monthFilter{
+    border: none;
+    font-size: 1.3em;
+    height: 80%;
+    background-color: #EFEFEF;
+}
+#catFilter{
+    border: none;
+    font-size: 1.3em;
+    height: 80%;
+    padding-left: 10;
+    background-color: #EFEFEF;
+}

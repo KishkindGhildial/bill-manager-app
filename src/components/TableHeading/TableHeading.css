@@ -1,0 +1,24 @@
+.heading{
+    height: 3em;
+    width: 100%;
+    background-color: #131313;
+    color: white;
+    /* border-radius: 20px; */
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.billHeading{
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.billHeading h3 {
+    margin: 0;
+    padding: 0;
+}
