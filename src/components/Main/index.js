@@ -7,7 +7,7 @@ import TableData from '../TableData';
 import Container from '../Container';
 import TableHeading from '../TableHeading';
 import BillFilter from '../BillFilter';
-import Modal from '../../Modal';
+import Modal from '../Modal';
 
 const Main = () => {
   const [billList, setBillList] = useState([]);

@@ -1,7 +1,7 @@
 import React from 'react';
-import Container from '../components/Container';
-import CrossButton from '../components/CrossButton';
-import Form from '../components/Form';
+import Container from '../Container';
+import CrossButton from '../CrossButton';
+import Form from '../Form';
 
 const Modal = ({ handleShowModal, setBillList }) => {
   return (
