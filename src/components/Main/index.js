@@ -117,6 +117,7 @@ const Main = () => {
             handleMonthChange={handleMonthChange}
             handleCategoryChange={handleCategoryChange}
             handleShowModal={handleShowModal}
+            billsList={billTableData}
           />
           <TableHeading class="heading" />
           <BillTable

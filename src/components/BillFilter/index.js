@@ -3,6 +3,10 @@ import './BillFilter.css';
 import Container from '../Container';
 import Heading from '../Heading';
 import Button from '../Button';
+import { getMonthlyTotal, getMinMonthBills } from '../../utils';
+import Text from '../Text';
+import Input from '../Input';
+import { useState } from 'react';
 
 const BillFilter = ({
   selectedMonth,
@@ -10,7 +14,15 @@ const BillFilter = ({
   handleMonthChange,
   handleCategoryChange,
   handleShowModal,
+  billsList,
 }) => {
+  const [budget, setBudget] = useState(null);
+  const [showMinMonthBills, setShowMinMonthBills] = useState(false);
+
+  const handleBudgetChange = e => {
+    setBudget(e.target.value);
+  };
+
   return (
     <Container className="option">
       <select
@@ -57,6 +69,26 @@ const BillFilter = ({
       <Button className="addBill" handleClick={() => handleShowModal('chart')}>
         Chart
       </Button>
+      <Text className="total">{getMonthlyTotal(billsList)}</Text>
+      <Input
+        name="amount"
+        type="number"
+        value={budget}
+        onChange={handleBudgetChange}
+        label="Amount"
+        errorMsg={''}
+      />
+      <Button
+        className={!budget ? 'calcBudgetDisabled' : 'calcBudget'}
+        handleClick={() => setShowMinMonthBills(prevState => !prevState)}
+      >
+        Calculate Min Bills in Budget
+      </Button>
+      {showMinMonthBills
+        ? getMinMonthBills(billsList, budget).map(entry => (
+            <Text className="total">,{entry.amount}</Text>
+          ))
+        : null}
     </Container>
   );
 };

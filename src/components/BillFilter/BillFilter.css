@@ -19,3 +19,11 @@
     padding-left: 10;
     background-color: #EFEFEF;
 }
+
+.calcBudget{
+
+}
+
+.calcBudgetDisabled{
+    pointer-events: none;
+}
