@@ -2,13 +2,29 @@ import React from 'react';
 import Container from '../Container';
 import CrossButton from '../CrossButton';
 import Form from '../Form';
+import Chart from '../Chart';
 
-const Modal = ({ handleShowModal, setBillList }) => {
+const Modal = ({
+  handleHideModal,
+  setBillList,
+  modalState,
+  selectedMonth,
+  billList,
+}) => {
   return (
     <Container className="modal">
-      <CrossButton handleShowModal={handleShowModal} />
+      <CrossButton handleHideModal={handleHideModal} />
       <Container className="modalContent">
-        <Form setBillList={setBillList} />
+        {modalState.type === 'add' || modalState.type === 'edit' ? (
+          <Form
+            setBillList={setBillList}
+            modalState={modalState}
+            selectedMonth={selectedMonth}
+            handleHideModal={handleHideModal}
+          />
+        ) : (
+          <Chart billList={billList} selectedMonth={selectedMonth} />
+        )}
       </Container>
     </Container>
   );

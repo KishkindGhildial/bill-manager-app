@@ -1,20 +1,29 @@
 import React from 'react';
 import './Main.css';
-import bills from '../../billData';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import TableData from '../TableData';
 import Container from '../Container';
 import TableHeading from '../TableHeading';
 import BillFilter from '../BillFilter';
 import Modal from '../Modal';
+import BillTable from '../BillTable';
+
+import { deleteBill } from '../../actions/billDataActions';
 
 const Main = () => {
-  const [billList, setBillList] = useState([]);
-  const [showModal, setShowModal] = useState(false);
+  const dispatch = useDispatch();
   const [filter, setFilter] = useState({
     month: 1,
     category: '',
+  });
+  const bills = useSelector(state => state.billData);
+  const billTableData = useSelector(state => state.billData[filter.month]);
+  const [billList, setBillList] = useState([]);
+  const [modalState, setModalState] = useState({
+    isOpen: false,
+    type: null,
+    id: null,
   });
 
   const fetchMonthlyBills = () => {
@@ -50,8 +59,12 @@ const Main = () => {
     }));
   };
 
-  const handleShowModal = () => {
-    setShowModal(prevState => !prevState);
+  const handleShowModal = (type, id = null) => {
+    setModalState({ isOpen: true, type: type, id: id });
+  };
+
+  const handleHideModal = () => {
+    setModalState({ isOpen: false, type: null, id: null });
   };
 
   const handleCategoryChange = cat => {
@@ -59,6 +72,14 @@ const Main = () => {
       ...prevState,
       ...{ month: '', category: cat },
     }));
+  };
+
+  const handleEditClick = id => {
+    handleShowModal('edit', id);
+  };
+
+  const handleDeleteClick = id => {
+    dispatch(deleteBill(id));
   };
 
   useEffect(() => {
@@ -80,8 +101,14 @@ const Main = () => {
   return (
     <>
       <Container className="main">
-        {showModal ? (
-          <Modal handleShowModal={handleShowModal} setBillList={setBillList} />
+        {modalState.isOpen ? (
+          <Modal
+            handleHideModal={handleHideModal}
+            setBillList={setBillList}
+            modalState={modalState}
+            selectedMonth={filter.month}
+            billList={billTableData}
+          />
         ) : null}
         <Container className="dataCenter">
           <BillFilter
@@ -92,9 +119,11 @@ const Main = () => {
             handleShowModal={handleShowModal}
           />
           <TableHeading class="heading" />
-          {billList.map(billData => (
-            <TableData billData={billData} keyID={billData.id} />
-          ))}
+          <BillTable
+            billList={billTableData}
+            handleEditClick={handleEditClick}
+            handleDeleteClick={handleDeleteClick}
+          />
         </Container>
       </Container>
     </>

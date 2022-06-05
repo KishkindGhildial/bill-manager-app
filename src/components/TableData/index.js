@@ -2,8 +2,9 @@ import React from 'react';
 import './TableData.css';
 import Container from '../Container';
 import Heading from '../Heading';
+import Button from '../Button';
 
-const TableData = ({ billData, keyID }) => {
+const TableData = ({ billData, keyID, handleEditClick, handleDeleteClick }) => {
   return (
     <Container className="card" key={keyID}>
       {Object.keys(billData).map((billKey, index) =>
@@ -18,6 +19,18 @@ const TableData = ({ billData, keyID }) => {
           </Container>
         ) : null
       )}
+      <Button
+        className="editButton"
+        handleClick={() => handleEditClick(billData.id)}
+      >
+        Edit
+      </Button>
+      <Button
+        className="deleteButton"
+        handleClick={() => handleDeleteClick(billData.id)}
+      >
+        Delete
+      </Button>
     </Container>
   );
 };

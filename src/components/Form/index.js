@@ -1,23 +1,38 @@
 import React from 'react';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Container from '../Container';
 import Input from '../Input';
 import Dropdown from '../Dropdown';
 import Button from '../Button';
 
-import { addBill } from '../../actions/billDataActions';
+import { toggleDateFormat } from '../../utils';
 
-const Form = ({ setBillList }) => {
+import { addBill, editBill } from '../../actions/billDataActions';
+
+const Form = ({ setBillList, modalState, selectedMonth, handleHideModal }) => {
   const dispatch = useDispatch();
+  const storeData = useSelector(state => state);
+  const getFormData = () => {
+    const { type, id } = modalState;
+    if (type === 'edit' && id) {
+      const month = id.split('_')[0];
+      const editFormData = storeData.billData[month].filter(
+        bill => bill.id === id
+      )[0];
+      return editFormData;
+    } else {
+      return {
+        description: '',
+        category: '',
+        date: '',
+        amount: 0,
+      };
+    }
+  };
 
-  const [formData, setFormData] = useState({
-    description: '',
-    category: '',
-    date: '',
-    amount: 0,
-  });
+  const [formData, setFormData] = useState(getFormData());
   const [formErrors, setFormErrors] = useState({
     description: '',
     category: '',
@@ -79,11 +94,14 @@ const Form = ({ setBillList }) => {
       }
     });
     setFormErrors(errorMsgs);
-    // setBillList(prevState => {
-    //   const newState = [...prevState, formData];
-    //   return newState;
-    // });
-    dispatch(addBill(formData));
+    const { type, id } = modalState;
+    if (type === 'add') {
+      dispatch(addBill(formData));
+    } else if (type === 'edit') {
+      const month = id.split('_')[0];
+      dispatch(editBill({ editData: formData, preEditMonth: month }));
+    }
+    handleHideModal();
   };
 
   return (
@@ -114,6 +132,8 @@ const Form = ({ setBillList }) => {
           onChange={handleDateChange}
           label="Date"
           errorMsg={formErrors.date}
+          modalType={modalState.type}
+          selectedMonth={selectedMonth}
         />
         <Input
           name="amount"

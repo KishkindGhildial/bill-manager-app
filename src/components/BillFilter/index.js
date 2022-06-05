@@ -51,8 +51,11 @@ const BillFilter = ({
         <option value="Personal Care">Personal Care</option>
         <option value="Travel">Travel</option>
       </select>
-      <Button className="form" handleClick={handleShowModal}>
-        Form
+      <Button className="addBill" handleClick={() => handleShowModal('add')}>
+        Add
+      </Button>
+      <Button className="addBill" handleClick={() => handleShowModal('chart')}>
+        Chart
       </Button>
     </Container>
   );
