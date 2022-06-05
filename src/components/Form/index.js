@@ -73,10 +73,9 @@ const Form = ({ setBillList }) => {
       }
     });
     setFormErrors(errorMsgs);
-    debugger;
     setBillList(prevState => {
-      debugger;
-      return prevState.push(formData);
+      const newState = [...prevState, formData];
+      return newState;
     });
   };
 
