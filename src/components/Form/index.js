@@ -1,11 +1,17 @@
 import React from 'react';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
 import Container from '../Container';
 import Input from '../Input';
 import Dropdown from '../Dropdown';
 import Button from '../Button';
 
+import { addBill } from '../../actions/billDataActions';
+
 const Form = ({ setBillList }) => {
+  const dispatch = useDispatch();
+
   const [formData, setFormData] = useState({
     description: '',
     category: '',
@@ -73,10 +79,11 @@ const Form = ({ setBillList }) => {
       }
     });
     setFormErrors(errorMsgs);
-    setBillList(prevState => {
-      const newState = [...prevState, formData];
-      return newState;
-    });
+    // setBillList(prevState => {
+    //   const newState = [...prevState, formData];
+    //   return newState;
+    // });
+    dispatch(addBill(formData));
   };
 
   return (
