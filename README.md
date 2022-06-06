@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# Car Wash Bills Manager
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A sample bill management dashboard built using React & Redux (Scroll further below for more detials...)
 
-## Available Scripts
+### Bills for the month of January
+<img width="1440" alt="Screenshot 2022-06-06 at 4 09 05 PM" src="https://user-images.githubusercontent.com/73109553/172147108-f6596658-2bdf-43b0-996f-4e1487d8b2c2.png">
 
-In the project directory, you can run:
+### Bills for the month of February
+<img width="1440" alt="Screenshot 2022-06-06 at 4 09 28 PM" src="https://user-images.githubusercontent.com/73109553/172147379-f945e6d9-96d9-4f65-8a11-30166c314caf.png">
 
-### `npm start`
+### Bills for the Food & Dining Category
+<img width="1440" alt="Screenshot 2022-06-06 at 4 09 45 PM" src="https://user-images.githubusercontent.com/73109553/172147519-b17679c2-283f-4b22-b9ff-d14b95d19a74.png">
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Add Bill Form
+<img width="1440" alt="Screenshot 2022-06-06 at 4 10 35 PM" src="https://user-images.githubusercontent.com/73109553/172147630-f811abf0-a7b6-4848-a2ed-21e337fe3884.png">
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Edit Bill Form
+<img width="1440" alt="Screenshot 2022-06-06 at 4 24 59 PM" src="https://user-images.githubusercontent.com/73109553/172147871-9ab22fba-918f-4e19-aef0-b3d05265c9f9.png">
 
-### `npm test`
+### Real Time "time-series chart" of the monthly billing cycle
+<img width="1440" alt="Screenshot 2022-06-06 at 4 12 23 PM" src="https://user-images.githubusercontent.com/73109553/172147961-977114a5-50d1-4f98-906e-4d693f7924a6.png">
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Level 1
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- The dashboard has Add, Edit, Delete functionality
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- The Bills are listed on Monthly basis
 
-### `npm run eject`
+- Time-series graphs represent each month's expenditure visually in real time
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- All components are created, desinged manually from scratch
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- The entries can be filtered by category
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- When handling data, for ease of demo purposes the year has been locked to '2020', with choice to perform all above operations across the months & dates
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Level 2
 
-## Learn More
+- Dashboard has a find the "minimum number of bills that should be paid" feature
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- When toggled, it higlights the minimum number of bills that should be paid such that their total value does not exceed the monthly budget value while meeting the condition that no more bills can be added from the remaining bills.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- This feature renders in real time as well
 
-### Code Splitting
+## Technical Specifications
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Built over CRA
+- Built using React Hooks
+- Redux based on session data
+- Redux Persist
+- Chart.js
 
-### Analyzing the Bundle Size
+## Setup Instructions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- After cloning / downloading
+- `npm install`
+- `npm start`
