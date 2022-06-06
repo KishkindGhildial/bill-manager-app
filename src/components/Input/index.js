@@ -18,7 +18,9 @@ const Input = ({
 
   return (
     <Container className="inputContainer">
-      <label htmlFor={name}>{label}</label>
+      <label className="lable" htmlFor={name}>
+        {label}
+      </label>
 
       {type === 'date' && modalType === 'edit' ? (
         <input

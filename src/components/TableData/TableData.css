@@ -1,6 +1,6 @@
 .card{
     height: 6em;
-    width: 100%;
+    width: calc(100% - 20px);
     background-color: #BFBBBA;
     /* border-radius: 20px; */
     display: flex;
@@ -8,20 +8,37 @@
     padding: 0 10px;
     display: flex;
     justify-content: space-evenly;
+    position: relative;
 }
 
 .card:nth-child(2n){
     background-color: #efefef;
 }
 
-.card div {
+.cardDiv {
     width: 25%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* .card p {
-    margin: 0;
-    margin-bottom: 10px;
-} */
+.editButton{
+    background-color: transparent;
+    border: none;
+    color: #09a49c;
+    font-size: 1.1em;
+    position: absolute;
+    top: 38px;
+    right: 70px;
+
+}
+
+.deleteButton{
+    background-color: transparent;
+    border: none;
+    color: #F21010;
+    font-size: 1.1em;
+    position: absolute;
+    top: 38px;
+    right: 10px;
+}

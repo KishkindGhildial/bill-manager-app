@@ -8,6 +8,7 @@ import TableHeading from '../TableHeading';
 import BillFilter from '../BillFilter';
 import Modal from '../Modal';
 import BillTable from '../BillTable';
+import Total from '../Total';
 
 import { deleteBill } from '../../actions/billDataActions';
 
@@ -119,14 +120,16 @@ const Main = () => {
             handleShowModal={handleShowModal}
             billsList={billTableData}
           />
-          <TableHeading class="heading" />
+          <TableHeading className="heading" />
           <BillTable
+            class="billTable"
             billList={billTableData}
             handleEditClick={handleEditClick}
             handleDeleteClick={handleDeleteClick}
           />
         </Container>
       </Container>
+      <Total billList={billTableData} />
     </>
   );
 };

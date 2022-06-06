@@ -10,7 +10,7 @@ const TableData = ({ billData, keyID, handleEditClick, handleDeleteClick }) => {
       {Object.keys(billData).map((billKey, index) =>
         billKey !== 'id' ? (
           <Container
-            className={billKey}
+            className="cardDiv"
             key={`id_${index}&billKey_${billData['id']}`}
           >
             <Heading type={'h3'} className={billData[billKey]}>

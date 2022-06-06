@@ -3,12 +3,12 @@ import './TableHeading.css';
 import Container from '../Container';
 import Heading from '../Heading';
 
-const TableHeading = () => {
+const TableHeading = ({ className }) => {
   const title = ['Description', 'Category', 'Date', 'Amount'];
   return (
-    <Container className="heading">
-      {title.map(title => (
-        <Container className="billHeading">
+    <Container className={className}>
+      {title.map((title, index) => (
+        <Container className="billHeading" key={`${title}_${index}`}>
           <Heading type={'h3'} className={title}>
             {title}
           </Heading>

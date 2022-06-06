@@ -10,6 +10,7 @@ const BillTable = ({ billList, handleEditClick, handleDeleteClick }) => {
           keyID={billData.id}
           handleEditClick={handleEditClick}
           handleDeleteClick={handleDeleteClick}
+          key={billData.id}
         />
       ))}
     </>

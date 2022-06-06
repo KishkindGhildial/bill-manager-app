@@ -20,7 +20,7 @@
 
 .dataCenter{
     width: 100%;
-    height: calc(100vh - 5em - 15px);
+    height: calc(100vh - 5em - 15px - 40px);
     background-color: #EFEFEF;
     border-radius: 10px;
     border: 1px solid #5BB5B0;
@@ -28,17 +28,23 @@
     margin: 5px;
 }
 
+.billTable{
+    width: 80%;
+}
+
+
 .modal{
     height: 100%;
     width: 100%;
     position: absolute;
     top: 0;
-    left:0;
+    left: 0;
     background-color: #ffffff7b;
     display: flex;
     justify-content: center;
     align-items: center;
     backdrop-filter: blur(2px);
+    z-index: 2;
 }
 
 .modalContent{
@@ -46,6 +52,9 @@
     width: 40%;
     background-color: white;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .crossButton {
@@ -58,3 +67,44 @@
     width: 20px;
     height: 20px;
 }
+
+.lable {
+    margin-right: 5px;
+    font-size: 1.3em;
+}
+
+.totalContainer {
+    position: absolute;
+    bottom: 0;
+    left: 5px;
+    width: calc(100% - 10px);
+    height: 40px;
+    background-color: #5BB5B0 ;
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.totalAmount {
+    color: white;
+    margin-right: -70px;
+
+}
+
+.totalAmountText {
+    color: white;
+    margin-right: -150px;
+}
+
+.totalAmountContainer{
+    display: flex;
+    width: 40%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+
+/* min number of bills to be paid */
