@@ -71,6 +71,6 @@ export const getMinMonthBills = (billsList, budget) => {
     }
     descBillsList.shift();
   }
-  console.log(resultBills);
-  return result;
+  const resultObj = { result: result, resultBills: resultBills };
+  return resultObj;
 };

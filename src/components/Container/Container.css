@@ -48,7 +48,7 @@
 }
 
 .modalContent{
-    height: 60%;
+    min-height: 60%;
     width: 40%;
     background-color: white;
     border-radius: 10px;
@@ -105,6 +105,44 @@
     align-items: center;
 }
 
+.form input {
+    width: 500px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #179d96;
+    padding: 0 5px;
+}
 
+.form select {
+    width: 510px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #179d96;
+    padding: 0 5px;
+}
 
-/* min number of bills to be paid */
+.form .inputContainer {
+    margin-bottom: 20px;
+}
+
+.form .dropdownContainer{
+    margin-bottom: 20px;
+}
+
+.formButton{
+    height: 30px;
+    width: 80px;
+    background-color: #5bb5b1a7;
+    border: 1px solid #179d96;
+    margin-bottom: 30px;
+}
+
+.dissabledFormButton{
+    height: 30px;
+    width: 80px;
+    background-color: #dbe3e2a7;
+    border: 1px solid #667473;
+    color:#667473 ;
+    margin-bottom: 30px;
+    pointer-events: none;
+}

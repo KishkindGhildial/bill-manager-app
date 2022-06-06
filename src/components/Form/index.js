@@ -6,6 +6,7 @@ import Container from '../Container';
 import Input from '../Input';
 import Dropdown from '../Dropdown';
 import Button from '../Button';
+import Heading from '../Heading';
 
 import { toggleDateFormat } from '../../utils';
 
@@ -27,18 +28,12 @@ const Form = ({ setBillList, modalState, selectedMonth, handleHideModal }) => {
         description: '',
         category: '',
         date: '',
-        amount: 0,
+        amount: '',
       };
     }
   };
 
   const [formData, setFormData] = useState(getFormData());
-  const [formErrors, setFormErrors] = useState({
-    description: '',
-    category: '',
-    date: '',
-    amount: '',
-  });
 
   const categoryValues = [
     'FoodNDining',
@@ -79,21 +74,6 @@ const Form = ({ setBillList, modalState, selectedMonth, handleHideModal }) => {
 
   const handleFormSubmit = e => {
     e.preventDefault();
-    console.log(formData);
-    // create funtion
-    const errorMsgs = {};
-    Object.keys(formData).forEach(key => {
-      if (!formData[key]) {
-        errorMsgs[key] = 'This field is required';
-        // switch(key){
-        //     case 'description' :
-        //     case 'category' :
-        //     case 'date' :
-        //     case 'amount' :
-        // }
-      }
-    });
-    setFormErrors(errorMsgs);
     const { type, id } = modalState;
     if (type === 'add') {
       dispatch(addBill(formData));
@@ -106,6 +86,11 @@ const Form = ({ setBillList, modalState, selectedMonth, handleHideModal }) => {
 
   return (
     <Container className="form">
+      <Heading type="h1" className="editAdd">
+        {`${
+          modalState.type.charAt(0).toUpperCase() + modalState.type.slice(1)
+        } Bill`}
+      </Heading>
       <form method="post" action="#">
         <Input
           name="description"
@@ -113,7 +98,6 @@ const Form = ({ setBillList, modalState, selectedMonth, handleHideModal }) => {
           value={formData.description}
           onChange={handleDescChange}
           label="Description"
-          errorMsg={formErrors.description}
         />
         <Dropdown
           id="cat"
@@ -123,7 +107,6 @@ const Form = ({ setBillList, modalState, selectedMonth, handleHideModal }) => {
           placeholder="Category"
           options={categoryValues}
           label="Category"
-          errorMsg={formErrors.category}
         />
         <Input
           name="date"
@@ -131,7 +114,6 @@ const Form = ({ setBillList, modalState, selectedMonth, handleHideModal }) => {
           value={formData.date}
           onChange={handleDateChange}
           label="Date"
-          errorMsg={formErrors.date}
           modalType={modalState.type}
           selectedMonth={selectedMonth}
         />
@@ -141,10 +123,19 @@ const Form = ({ setBillList, modalState, selectedMonth, handleHideModal }) => {
           value={formData.amount}
           onChange={handleAmountChange}
           label="Amount"
-          errorMsg={formErrors.amount}
         />
-        <Button className="form" handleClick={e => handleFormSubmit(e)}>
-          Form
+        <Button
+          className={
+            formData.description === '' ||
+            formData.category === '' ||
+            formData.date === '' ||
+            formData.amount === ''
+              ? 'dissabledFormButton'
+              : 'formButton'
+          }
+          handleClick={e => handleFormSubmit(e)}
+        >
+          Submit
         </Button>
       </form>
     </Container>

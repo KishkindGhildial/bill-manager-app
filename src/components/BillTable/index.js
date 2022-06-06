@@ -2,6 +2,7 @@ import React from 'react';
 import TableData from '../TableData';
 
 const BillTable = ({ billList, handleEditClick, handleDeleteClick }) => {
+  debugger;
   return (
     <>
       {billList.map(billData => (

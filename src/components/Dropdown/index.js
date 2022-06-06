@@ -13,10 +13,12 @@ const Dropdown = ({
   return (
     <Container className="dropdownContainer">
       <label htmlFor={id}>{label}</label>
+      <br />
       <select
         id={id}
         name={name}
         value={value}
+        required
         onChange={e => {
           onChange(e);
         }}

@@ -65,33 +65,41 @@ const BillFilter = ({
           <option value="Travel">Travel</option>
         </select>
       </Container>
-
-      <Text className="total">{getMonthlyTotal(billsList)}</Text>
       <Container className="minBills">
-        <Input
-          name="Budget"
-          type="number"
-          value={budget}
-          onChange={handleBudgetChange}
-          label="Budget"
-          errorMsg={''}
-        />
-        <Button
-          className={!budget ? 'calcBudgetDisabled' : 'calcBudget'}
-          handleClick={() => setShowMinMonthBills(prevState => !prevState)}
-        >
-          Calculate
-        </Button>
-        <Container className="noOfBills">
-          {showMinMonthBills ? (
-            // getMinMonthBills(billsList, budget).map(entry => (
-            //     <Text className="total" key={entry.id}>
-            //       ,{entry.amount}
-            //     </Text>
-            //   ))
-            <Text>{getMinMonthBills(billsList, budget)}</Text>
-          ) : null}
+        <Container className="minBillInput">
+          <Input
+            name="Budget"
+            type="number"
+            value={budget}
+            onChange={handleBudgetChange}
+            label="Budget"
+            errorMsg={''}
+            br={false}
+          />
         </Container>
+        <Container className="minBillButton">
+          <Button
+            className={!budget ? 'calcBudgetDisabled' : 'calcBudget'}
+            handleClick={() => setShowMinMonthBills(prevState => !prevState)}
+          >
+            Calculate
+          </Button>
+        </Container>
+        {showMinMonthBills ? (
+          <Container className="noOfBills">
+            <Text>{'\u00A0'} Min. No. of Bills: </Text>
+            <Text>{getMinMonthBills(billsList, budget).result}</Text>
+            <Text> Bills Amount: </Text>
+            {getMinMonthBills(billsList, budget).resultBills.map(
+              (entry, index) => (
+                <Text className="total" key={`${entry}_${index}`}>
+                  {entry}
+                  {', '}
+                </Text>
+              )
+            )}
+          </Container>
+        ) : null}
       </Container>
       <Container className="addNChart">
         <Button className="addBill" handleClick={() => handleShowModal('add')}>

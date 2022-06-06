@@ -11,6 +11,7 @@ const Input = ({
   errorMsg,
   modalType = null,
   selectedMonth = '',
+  br = true,
 }) => {
   if (type === 'date') {
     debugger;
@@ -21,14 +22,15 @@ const Input = ({
       <label className="lable" htmlFor={name}>
         {label}
       </label>
-
+      {br ? <br /> : null}
       {type === 'date' && modalType === 'edit' ? (
         <input
           id={name}
           name={name}
-          placeholder={name}
+          placeholder={label}
           type={type}
           value={value}
+          required
           onChange={e => {
             const newMonth = e.target.value.split('-')[1];
             const currentMonth = value.split('-')[1];
@@ -43,9 +45,10 @@ const Input = ({
         <input
           id={name}
           name={name}
-          placeholder={name}
+          placeholder={label}
           type={type}
           value={value}
+          required
           onChange={e => {
             onChange(e);
           }}
@@ -56,9 +59,10 @@ const Input = ({
         <input
           id={name}
           name={name}
-          placeholder={name}
+          placeholder={label}
           type={type}
           value={value}
+          required
           onChange={e => {
             onChange(e);
           }}

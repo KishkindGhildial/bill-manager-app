@@ -2,7 +2,6 @@ import React from 'react';
 import './Main.css';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import TableData from '../TableData';
 import Container from '../Container';
 import TableHeading from '../TableHeading';
 import BillFilter from '../BillFilter';
@@ -19,7 +18,23 @@ const Main = () => {
     category: '',
   });
   const bills = useSelector(state => state.billData);
-  const billTableData = useSelector(state => state.billData[filter.month]);
+  const billTableData = useSelector(state => {
+    if (filter.month !== '') {
+      return state.billData[filter.month];
+    } else {
+      const data = [];
+      for (const month in bills) {
+        for (const bill in bills[month]) {
+          const cat = bills[month][bill].category;
+          if (cat === filter.category) {
+            data.push(bills[month][bill]);
+          }
+        }
+      }
+      return data;
+    }
+  });
+
   const [billList, setBillList] = useState([]);
   const [modalState, setModalState] = useState({
     isOpen: false,

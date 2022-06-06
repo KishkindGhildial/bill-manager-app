@@ -23,7 +23,7 @@
 
 .calcBudget{
     font-size: 1.1em;
-    height: 30px;
+    height: 35px;
     background-color: white;
     border: 1.5px solid #5BB5B0;
     border-radius: 5px;
@@ -31,7 +31,7 @@
 
 .calcBudgetDisabled{
     pointer-events: none;
-    height: 30px;
+    height: 35px;
     font-size: 1.1em;
     background-color: white;
     border: 1.5px solid #a1bcbc;
@@ -51,7 +51,7 @@
 
 #Budget{
     font-size: 1.0em;
-    height: 80%;
+    height: 30px;
     padding-left: 10;
     width: 100px;
     border: 1.5px solid #5BB5B0;
@@ -59,13 +59,39 @@
 }
 
 .minBills{
+    width: 900px;
     display: flex;
-    width: 400px;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     /* background-color: #5BB5B0; */
 }
 
 .noOfBills{
-    width: 50px;
+    
     border: 1.5px solid #5BB5B0;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.noOfBills p {
+    margin: 0;
+    padding: 0;
+    margin-right: 10px;
+}
+
+.minBillInput{
+    width: 200px;
+}
+
+.minBillButton{
+    width: 110px;
+}
+
+/* .minBills .inputContainer{
+    margin: 0;
+} */
+
+.billsAmount{
+    margin-left: 20px;
+    background-color: #5BB5B0;
 }
